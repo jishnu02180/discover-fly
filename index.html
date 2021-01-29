@@ -135,67 +135,28 @@
             const firstClassPlusBtn = document.getElementById("first-class-plus");
             firstClassPlusBtn.addEventListener('click', function () {
                 calculateTicketCost("first-class", true, "firstClass");
-                // const ticketInput = document.getElementById("first-class-count").value;
-                // const ticketInputNumber = parseInt(ticketInput);
-                // const totalTicket = ticketInputNumber + 1;
-                // document.getElementById("first-class-count").value = totalTicket;
-
-                // const ticketInputPriceAmount = document.getElementById("first-class-label").innerText;
-                // const ticketInputPriceAmountNumber = parseFloat(ticketInputPriceAmount);
-                // const totalTicketCost = totalTicket * 150;
-                // document.getElementById("first-class-label").innerText = totalTicketCost;
             });
 
             const firstClassMinusBtn = document.getElementById("first-class-minus");
             firstClassMinusBtn.addEventListener('click', function () {
                 calculateTicketCost("first-class", false, "firstClass");
-                // const ticketInput = document.getElementById("first-class-count").value;
-                // const ticketInputNumber = parseInt(ticketInput);
-                // const totalTicket = ticketInputNumber - 1;
-                // document.getElementById("first-class-count").value = totalTicket;
-
-                // const ticketInputPriceAmount = document.getElementById("first-class-label").innerText;
-                // const ticketInputPriceAmountNumber = parseFloat(ticketInputPriceAmount);
-                // const totalTicketCost = totalTicket * 150;
-                // document.getElementById("first-class-label").innerText = totalTicketCost;
             });
 
             const economyClassPlusBtn = document.getElementById("economy-plus");
             economyClassPlusBtn.addEventListener('click', function () {
                 calculateTicketCost("economy-class", true, "economy");
-                // const ticketInput = document.getElementById("economy-class-count").value;
-                // const ticketInputNumber = parseInt(ticketInput);
-                // const totalTicket = ticketInputNumber + 1;
-                // document.getElementById("economy-class-count").value = totalTicket;
-
-                // const ticketInputPriceAmount = document.getElementById("economy-class-label").innerText;
-                // const ticketInputPriceAmountNumber = parseFloat(ticketInputPriceAmount);
-                // const totalTicketCost = totalTicket * 100;
-                // document.getElementById("economy-class-label").innerText = totalTicketCost;
             });
 
             economyClassMinusBtn = document.getElementById("ecomony-minus");
             economyClassMinusBtn.addEventListener('click', function () {
                 calculateTicketCost("economy-class", false, "economy");
-                //calculateTicketCost("economy-class",false,"economy");
-                // const ticketInput = document.getElementById("economy-class-count").value;
-                // const ticketInputNumber = parseInt(ticketInput);
-                // const totalTicket = ticketInputNumber - 1;
-                // document.getElementById("economy-class-count").value = totalTicket;
-
-                // const ticketInputPriceAmount = document.getElementById("economy-class-label").innerText;
-                // const ticketInputPriceAmountNumber = parseFloat(ticketInputPriceAmount);
-                // const totalTicketCost = totalTicket * 100;
-                // document.getElementById("economy-class-label").innerText = totalTicketCost;
             });
 
             const bookNowBtn = document.getElementById("book-now");
             bookNowBtn.addEventListener('click', function () {
-                console.log('modal click');
-                //const totalCostInput = document.getElementById("total-cost").value;
                 const totalCost = inputValueForInnerText("total-cost");
                 //alert("your total cost is " + totalCost);
-                var tenure = prompt("Your total ticket cost is ", totalCost);
+                var tenure = prompt("Your total ticket cost is ", '$' + totalCost);
             
             });
 
@@ -204,8 +165,6 @@
 
 
             function calculateTicketCost(ticket, isIncrease, type) {
-                // const ticketInput = document.getElementById("economy-class-count").value;
-                // const ticketInputNumber = parseInt(ticketInput);
                 const ticketInputNumber = inputValue(ticket + '-count');
                 let totalTicket = 0;
                 if (isIncrease == true) {
@@ -216,8 +175,6 @@
                     totalTicket = ticketInputNumber - 1;
                 }
                 document.getElementById(ticket + '-count').value = totalTicket;
-                // const ticketInputPriceAmount = document.getElementById(ticket + '-label').innerText;
-                // const ticketInputPriceAmountNumber = parseFloat(ticketInputPriceAmount);
                 const ticketInputPriceAmountNumber = inputValueForInnerText(ticket + '-label');
 
                 let totalTicketCost = 0;
@@ -244,16 +201,9 @@
             }
 
             function totalCost() {
-                //    const firstClassTicketInput = document.getElementById("first-class-count");
-                //    const firstClassTicketCount = parseInt(firstClassTicketInput.value);
                 const firstClassTicketCount = inputValue("first-class-count");
-
-                //    const economyClassTicketInput = document.getElementById("economy-class-count");
-                //    const economyClassTicketCount = parseInt(economyClassTicketInput.value);
                 const economyClassTicketCount = inputValue("economy-class-count");
-
                 const totalTicketPrice = firstClassTicketCount * 150 + economyClassTicketCount * 100;
-                //console.log(totalTicketPrice);
 
                 document.getElementById("sub-total").innerText = totalTicketPrice;
                 const subTotal = inputValueForInnerText("sub-total");
