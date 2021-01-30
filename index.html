@@ -103,6 +103,18 @@
                     </div>
                 </div>
             </div>
+            <div class="form-popup" id="myForm">
+                <form class="form-container">
+                    <h1>Booking Ticket</h1>
+                    <label><b>First Class Ticket</b></label>
+                    <input id="first-class-ticket-booking" type="text" placeholder="First class ticket">
+                    <label><b>Economy Ticket</b></label>
+                    <input id="economy-class-ticket-booking" type="text" placeholder="Economy ticket">
+                    <label><b>Total cost</b></label>
+                    <input id="total-booking" type="text" placeholder="Total cost">
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </form>
+            </div>
             <button type="button" onclick="ticketBooking()" class="btn-style">Book Now</button>
         </div>
 
@@ -115,9 +127,19 @@
         <script>
             // handle sit book  
             function ticketBooking() {
-                const totalCost = inputValueForInnerText("total-cost");
-                //alert("your total cost is " + totalCost);
-                var tenure = prompt("Your total ticket cost is ", '$' + totalCost);
+                 const totalCost = inputValueForInnerText("total-cost");
+                 const firstClassTicket = inputValue("first-class-ticket-count");
+                 const economyClassTicket = inputValue("economy-class-ticket-count");
+                 document.getElementById("total-booking").value = '$' + totalCost;
+                 document.getElementById("first-class-ticket-booking").value = firstClassTicket;
+                 document.getElementById("economy-class-ticket-booking").value = economyClassTicket;
+                // //alert("your total cost is " + totalCost);
+                // var tenure = prompt("Your total ticket cost is ", '$' + totalCost);
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
             }
 
             // Ticket price calculation
