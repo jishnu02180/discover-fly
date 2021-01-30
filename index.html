@@ -52,23 +52,23 @@
             </div>
             <div class="input-group f-class">
                 <div>
-                    <label for="">First Class $<span id="first-class-label">150</span></label>
-                    <input id="first-class-count" type="text" class="form-control text-center" value="0">
+                    <label for="">First Class $<span id="first-class-ticket-label">150</span></label>
+                    <input id="first-class-ticket-count" type="text" class="form-control text-center" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button id="first-class-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                    <button id="first-class-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    <button onclick="calculateTicketCost('first', false, 'firstClass')" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                    <button onclick="calculateTicketCost('first', true, 'firstClass')" class="btn btn-default"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
 
             <div class="input-group f-class">
                 <div>
-                    <label for="">Economy $<span id="economy-class-label">100</span></label>
-                    <input id="economy-class-count" type="text" class="form-control text-center" value="0">
+                    <label for="">Economy $<span id="economy-class-ticket-label">100</span></label>
+                    <input id="economy-class-ticket-count" type="text" class="form-control text-center" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button id="ecomony-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                    <button id="economy-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    <button onclick="calculateTicketCost('economy', false, 'economy')" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                    <button onclick="calculateTicketCost('economy', true, 'economy')" class="btn btn-default"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
             <div class="calculations">
@@ -132,26 +132,27 @@
          
 
         <script>
-            const firstClassPlusBtn = document.getElementById("first-class-plus");
-            firstClassPlusBtn.addEventListener('click', function () {
-                calculateTicketCost("first-class", true, "firstClass");
-            });
-
-            const firstClassMinusBtn = document.getElementById("first-class-minus");
-            firstClassMinusBtn.addEventListener('click', function () {
-                calculateTicketCost("first-class", false, "firstClass");
-            });
-
-            const economyClassPlusBtn = document.getElementById("economy-plus");
-            economyClassPlusBtn.addEventListener('click', function () {
-                calculateTicketCost("economy-class", true, "economy");
-            });
-
-            economyClassMinusBtn = document.getElementById("ecomony-minus");
-            economyClassMinusBtn.addEventListener('click', function () {
-                calculateTicketCost("economy-class", false, "economy");
-            });
-
+            // // handle first-class + button 
+            // const firstClassPlusBtn = document.getElementById("first-class-plus");
+            // firstClassPlusBtn.addEventListener('click', function () {
+            //     // calculateTicketCost("first-class", true, "firstClass");
+            // });
+           // handle first-class - button      
+            // const firstClassMinusBtn = document.getElementById("first-class-minus");
+            // firstClassMinusBtn.addEventListener('click', function () {
+            //     // calculateTicketCost("first-class", false, "firstClass");
+            // });
+            // // handle Economy-class + button 
+            // const economyClassPlusBtn = document.getElementById("economy-plus");
+            // economyClassPlusBtn.addEventListener('click', function () {
+            //     // calculateTicketCost("economy-class", true, "economy");
+            // });
+            // // handle Economy-class + button 
+            // economyClassMinusBtn = document.getElementById("ecomony-minus");
+            // economyClassMinusBtn.addEventListener('click', function () {
+            //     // calculateTicketCost("economy-class", false, "economy");
+            // });
+            // handle sit book  
             const bookNowBtn = document.getElementById("book-now");
             bookNowBtn.addEventListener('click', function () {
                 const totalCost = inputValueForInnerText("total-cost");
@@ -161,11 +162,8 @@
             });
 
 
-
-
-
             function calculateTicketCost(ticket, isIncrease, type) {
-                const ticketInputNumber = inputValue(ticket + '-count');
+                const ticketInputNumber = inputValue(ticket + '-class-ticket-count');
                 let totalTicket = 0;
                 if (isIncrease == true) {
                     totalTicket = ticketInputNumber + 1;
@@ -174,8 +172,9 @@
                 if (isIncrease == false && ticketInputNumber > 0) {
                     totalTicket = ticketInputNumber - 1;
                 }
-                document.getElementById(ticket + '-count').value = totalTicket;
-                const ticketInputPriceAmountNumber = inputValueForInnerText(ticket + '-label');
+                //console.log('ticket',ticket);
+                document.getElementById(ticket + '-class-ticket-count').value = totalTicket;
+                //const ticketInputPriceAmountNumber = inputValueForInnerText(ticket + '-class-ticket-label');
 
                 let totalTicketCost = 0;
                 if (type == 'firstClass') {
@@ -184,7 +183,7 @@
                 if (type == 'economy') {
                     totalTicketCost = totalTicket * 100;
                 }
-                document.getElementById(ticket + '-label').innerText = totalTicketCost;
+                //document.getElementById(ticket + '-label').innerText = totalTicketCost;
                 totalCost();
             }
 
@@ -201,9 +200,10 @@
             }
 
             function totalCost() {
-                const firstClassTicketCount = inputValue("first-class-count");
-                const economyClassTicketCount = inputValue("economy-class-count");
+                const firstClassTicketCount = inputValue("first-class-ticket-count");
+                const economyClassTicketCount = inputValue("economy-class-ticket-count");
                 const totalTicketPrice = firstClassTicketCount * 150 + economyClassTicketCount * 100;
+                //console.log(totalTicketPrice);
 
                 document.getElementById("sub-total").innerText = totalTicketPrice;
                 const subTotal = inputValueForInnerText("sub-total");
