@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            <button id="book-now" class="btn-style">Book Now</button>
+            <button id="book-now" onclick="ticketBooking()" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -132,36 +132,14 @@
          
 
         <script>
-            // // handle first-class + button 
-            // const firstClassPlusBtn = document.getElementById("first-class-plus");
-            // firstClassPlusBtn.addEventListener('click', function () {
-            //     // calculateTicketCost("first-class", true, "firstClass");
-            // });
-           // handle first-class - button      
-            // const firstClassMinusBtn = document.getElementById("first-class-minus");
-            // firstClassMinusBtn.addEventListener('click', function () {
-            //     // calculateTicketCost("first-class", false, "firstClass");
-            // });
-            // // handle Economy-class + button 
-            // const economyClassPlusBtn = document.getElementById("economy-plus");
-            // economyClassPlusBtn.addEventListener('click', function () {
-            //     // calculateTicketCost("economy-class", true, "economy");
-            // });
-            // // handle Economy-class + button 
-            // economyClassMinusBtn = document.getElementById("ecomony-minus");
-            // economyClassMinusBtn.addEventListener('click', function () {
-            //     // calculateTicketCost("economy-class", false, "economy");
-            // });
             // handle sit book  
-            const bookNowBtn = document.getElementById("book-now");
-            bookNowBtn.addEventListener('click', function () {
+            function ticketBooking(){
                 const totalCost = inputValueForInnerText("total-cost");
                 //alert("your total cost is " + totalCost);
                 var tenure = prompt("Your total ticket cost is ", '$' + totalCost);
-            
-            });
+            }
 
-
+            // Ticket price calculation
             function calculateTicketCost(ticket, isIncrease, type) {
                 const ticketInputNumber = inputValue(ticket + '-class-ticket-count');
                 let totalTicket = 0;
@@ -198,6 +176,8 @@
                 const ticketInputPriceAmountNumber = parseFloat(ticketInputPriceAmount);
                 return ticketInputPriceAmountNumber;
             }
+
+            // Total ticket cost calculation
 
             function totalCost() {
                 const firstClassTicketCount = inputValue("first-class-ticket-count");
